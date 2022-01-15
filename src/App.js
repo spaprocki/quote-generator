@@ -28,11 +28,11 @@ class App extends React.Component {
         return (
             <div className="app">
                 <Card bg='info' className="col-lg-4 col-md-6 col-sm-8 col-10">
-                    <Card.Header>Quote machine</Card.Header>
+                    <Card.Header className="card-header">Quote machine</Card.Header>
                     <Card.Body>
                         <ReactCSSTransitionReplace transitionName="fade-wait"
                            transitionEnterTimeout={1000} transitionLeaveTimeout={400}>
-                            <Card.Text key={this.state.advice} className="mb-0 text-justify">{this.state.advice}</Card.Text>
+                            <Card.Text key={this.state.advice} className="card-text mb-0 text-justify font-weight-normal">{this.state.advice}</Card.Text>
                         </ReactCSSTransitionReplace>
                     </Card.Body>
                     <Card.Footer>
