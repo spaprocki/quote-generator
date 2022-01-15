@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import './App.css';
 import { Button, Card, Stack } from 'react-bootstrap';
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 class App extends React.Component {
     state = { advice: '' };
@@ -31,11 +32,14 @@ class App extends React.Component {
                 <Card bg='info'>
                     <Card.Header>Quote machine</Card.Header>
                     <Card.Body>
-                        <Card.Text className="mb-0 text-justify" onChange={this.textTransition}>{this.state.advice}</Card.Text>
+                        <ReactCSSTransitionReplace transitionName="fade-wait"
+                           transitionEnterTimeout={1000} transitionLeaveTimeout={400}>
+                            <Card.Text key={this.state.advice} className="mb-0 text-justify" onChange={this.textTransition}>{this.state.advice}</Card.Text>
+                        </ReactCSSTransitionReplace>
                     </Card.Body>
                     <Card.Footer>
                         <Stack className="justify-content-end" direction="horizontal" gap={1}>
-                        <Button id="new-quote" variant="primary" onClick={this.fetchAdvice}>New quote</Button>
+                            <Button id="new-quote" variant="primary" onClick={this.fetchAdvice}>New quote</Button>
                             <Button id="tweet-quote" variant="primary" href="https://www.twitter.com/intent/tweet">Tweet quote</Button>
                         </Stack>
                     </Card.Footer>
